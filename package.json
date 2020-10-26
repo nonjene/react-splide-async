@@ -1,6 +1,6 @@
 {
-  "name": "@splidejs/react-splide-async",
-  "version": "0.4.4",
+  "name": "react-splide-async",
+  "version": "0.4.5",
   "description": "The Splide component for React.",
   "author": "Naotoshi Fujita",
   "license": "MIT",
@@ -24,8 +24,7 @@
   },
   "peerDependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "classnames": "^2.2.6"
+    "react-dom": "^16.13.1"
   },
   "dependencies": {
     "@splidejs/splide": "^2.4.13"
@@ -37,7 +36,6 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
-    "classnames": "^2.2.6",
     "css-loader": "^4.2.1",
     "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.3.0",
