@@ -8,15 +8,25 @@
 </p>
 
 # React Splide
+
 **React Splide is the [Splide](https://github.com/Splidejs/splide) component for React.**
 * [Document](https://splidejs.com/integration-react-splide/)
 * [Splide Demos](https://splidejs.com/)
 * [Working Examples](https://splidejs.github.io/react-splide/)
 
+## About
+
+This package is a fork version of [@splidejs/react-splide](https://github.com/Splidejs/react-splide)
+
+**This alternate version contains:**
+- Fix `mount` event not trigger. Refer to PR [#7](https://github.com/Splidejs/react-splide/pull/7/)
+- Async load `@splidejs/splide` module when react component mounted. To make this react component small and also take care of SSR content.
+
+
 ## Installation
 Get the latest version by NPM:
 ```bash
-$ npm install @splidejs/react-splide
+$ npm install react-splide-async
 ```
 
 ## Usage
