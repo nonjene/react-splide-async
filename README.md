@@ -26,7 +26,7 @@ This package is a fork version of [@splidejs/react-splide](https://github.com/Sp
 ## Installation
 Get the latest version by NPM:
 ```bash
-$ npm install @splidejs/react-splide
+$ npm install react-splide-async
 ```
 
 ## Usage
