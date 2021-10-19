@@ -27,7 +27,7 @@
 		"react-dom": "16 - 18"
 	},
 	"dependencies": {
-		"@splidejs/splide": "^3.0.3"
+		"@splidejs/splide": "^3.1.7"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.10.5",
