@@ -21,10 +21,6 @@ export default class Splide extends React.PureComponent {
 	 * @param {string}   props.className           - Optional. Additional class name for the root element.
 	 * @param {import("react").CSSProperties}   props.style           - Optional. Additional style object for the root element.
 	 * @param {boolean}  props.hasSliderWrapper    - Optional. Whether to wrap a track by a slider element.
-	 * @param {boolean}  props.hasAutoplayProgress - Optional. Whether to render progress bar for autoplay.
-	 * @param {boolean}  props.hasAutoplayControls - Optional. Whether to render play/pause button for autoplay.
-	 * @param {string}   props.playButtonLabel     - Optional. The label for the play button.
-	 * @param {string}   props.pauseButtonLabel    - Optional. The label for the pause button.
 	 * @param {function} props.renderControls      - Optional. A function to render custom controls.
 	 */
 	constructor(props) {
@@ -60,10 +56,15 @@ export default class Splide extends React.PureComponent {
 	/**
 	 * Remount the splide when the component is updated.
 	 */
-	componentDidUpdate() {
-		if (this.splide) {
-			this.splide.refresh();
-		}
+	componentDidUpdate(prevProps) {
+		if (
+			prevProps.renderControls !== this.props.renderControls ||
+			prevProps.hasSliderWrapper !== this.props.hasSliderWrapper ||
+			prevProps.options !== this.props.options
+		)
+			if (this.splide) {
+				this.splide.refresh();
+			}
 	}
 
 	/**
