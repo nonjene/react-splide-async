@@ -19,6 +19,7 @@ export default class Splide extends React.PureComponent {
 	 * @param {Object}   props                     - Props.
 	 * @param {string}   props.id                  - Optional. Id attribute for the root element.
 	 * @param {string}   props.className           - Optional. Additional class name for the root element.
+	 * @param {import("react").CSSProperties}   props.style           - Optional. Additional style object for the root element.
 	 * @param {boolean}  props.hasSliderWrapper    - Optional. Whether to wrap a track by a slider element.
 	 * @param {boolean}  props.hasAutoplayProgress - Optional. Whether to render progress bar for autoplay.
 	 * @param {boolean}  props.hasAutoplayControls - Optional. Whether to render play/pause button for autoplay.
@@ -63,7 +64,6 @@ export default class Splide extends React.PureComponent {
 		if (this.splide) {
 			this.splide.refresh();
 		}
-		
 	}
 
 	/**
@@ -135,6 +135,7 @@ export default class Splide extends React.PureComponent {
 		const {
 			id,
 			className,
+			style,
 			hasSliderWrapper,
 			renderControls = noop,
 		} = this.props;
@@ -142,6 +143,7 @@ export default class Splide extends React.PureComponent {
 			<div
 				id={id}
 				className={classNames("splide", className)}
+				style={style}
 				ref={this.splideRef}
 			>
 				{hasSliderWrapper && (
