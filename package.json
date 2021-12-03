@@ -5,6 +5,7 @@
 	"author": "Naotoshi Fujita",
 	"license": "MIT",
 	"main": "dist/js/index.js",
+	"types": "react-splide-async.d.ts",
 	"keywords": [
 		"splide",
 		"slider",
