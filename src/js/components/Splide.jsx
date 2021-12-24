@@ -22,7 +22,8 @@ export default class Splide extends React.PureComponent {
 	 * @param {import("react").CSSProperties}   props.style           - Optional. Additional style object for the root element.
 	 * @param {boolean}  props.hasSliderWrapper    - Optional. Whether to wrap a track by a slider element.
 	 * @param {function} props.renderControls      - Optional. A function to render custom controls.
-	 * @param {function} props.syncSplide      - Optional. sync other slides
+	 * @param {function} props.onInited      		- Optional. sync other slides
+	 * @param {function} props.manualMount      		- Optional. not to mount automatally
 	 */
 	constructor(props) {
 		super(props);
@@ -37,11 +38,26 @@ export default class Splide extends React.PureComponent {
 	}
 
 	initializeSplide() {
-		const { options = {}, Extensions = {}, Transition = null } = this.props;
+		const {
+			options = {},
+			Extensions = {},
+			Transition = null,
+			manualMount,
+			onInited,
+		} = this.props;
 		import("@splidejs/splide").then(({ default: SplideSlider }) => {
 			this.splide = new SplideSlider(this.splideRef.current, options);
 			this.bind();
-			this.splide.mount(Extensions, Transition);
+
+			if (typeof onInited === "function") {
+				onInited(this.splide, {
+					sync: () => this.sync(),
+				});
+			}
+
+			if (!manualMount) {
+				this.splide.mount(Extensions, Transition);
+			}
 		});
 	}
 
@@ -68,10 +84,6 @@ export default class Splide extends React.PureComponent {
 			if (this.splide) {
 				this.splide.refresh();
 			}
-		}
-
-		if (syncSplide && prevProps.syncSplide !== syncSplide) {
-			this.sync(syncSplide);
 		}
 	}
 

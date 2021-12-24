@@ -13,7 +13,7 @@ import { createSlides } from "../utils/slides";
  * The class for the thumbnail slider example.
  * Need to call sync() after the component is mounted, using refs.
  */
-export default class ThumbnailsExample extends React.Component {
+export default class ThumbnailsExample extends React.PureComponent {
 	/**
 	 * ThumbnailExample constructor.
 	 *
@@ -22,14 +22,25 @@ export default class ThumbnailsExample extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.primaryRef = React.createRef();
-		this.secondaryRef = React.createRef();
+		this.splides = React.createRef();
 	}
 
 	/**
 	 * Set the sync target right after the component is mounted.
 	 */
-	componentDidMount() {}
+	onInitSplide(splide) {
+		this.splides.current = this.splides.current || [];
+		this.splides.current.push(splide);
+
+		console.log(this.splides.current);
+
+		if (this.splides.current.length === 2) {
+			const [first, sec] = this.splides.current;
+			first.sync(sec);
+			first.mount();
+			sec.mount();
+		}
+	}
 
 	/**
 	 * Render slides.
@@ -52,7 +63,7 @@ export default class ThumbnailsExample extends React.Component {
 	render() {
 		const primaryOptions = {
 			type: "loop",
-			perPage: 2,
+			perPage: 1,
 			perMove: 1,
 			gap: "1rem",
 			pagination: false,
@@ -85,13 +96,17 @@ export default class ThumbnailsExample extends React.Component {
 
 				<Splide
 					options={primaryOptions}
-					ref={this.primaryRef}
-					syncSplide={this.secondaryRef.current?.splide}
+					onInited={this.onInitSplide.bind(this)}
+					manualMount
 				>
 					{this.renderSlides()}
 				</Splide>
 
-				<Splide options={secondaryOptions} ref={this.secondaryRef}>
+				<Splide
+					options={secondaryOptions}
+					onInited={this.onInitSplide.bind(this)}
+					manualMount
+				>
 					{this.renderSlides()}
 				</Splide>
 			</div>

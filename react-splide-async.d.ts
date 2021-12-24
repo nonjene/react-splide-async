@@ -25,7 +25,15 @@ declare module "react-splide-async" {
 			oldIndex: number,
 			destIndex: number
 		) => void;
+		// When Splide object created, not yet mount
+		onInited?: (
+			instance: SplideObj,
+			methods: {
+				sync: (splide: SplideObj) => void;
+			}
+		) => void;
 		onMounted?: (instance: SplideObj) => void;
+		manualMount?: boolean;
 	}
 	export type SplideObject = SplideObj;
 
