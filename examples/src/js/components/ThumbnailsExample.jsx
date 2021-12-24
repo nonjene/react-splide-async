@@ -5,8 +5,8 @@
  * @copyright Naotoshi Fujita. All rights reserved.
  */
 
-import React from 'react';
-import { Splide, SplideSlide } from '../../../../src/js';
+import React from "react";
+import { Splide, SplideSlide } from "../../../../src/js";
 import { createSlides } from "../utils/slides";
 
 /**
@@ -19,19 +19,17 @@ export default class ThumbnailsExample extends React.Component {
 	 *
 	 * @param {Object} props - Props.
 	 */
-	constructor( props ) {
-		super( props );
+	constructor(props) {
+		super(props);
 
-		this.primaryRef   = React.createRef();
+		this.primaryRef = React.createRef();
 		this.secondaryRef = React.createRef();
 	}
 
 	/**
 	 * Set the sync target right after the component is mounted.
 	 */
-	componentDidMount() {
-		this.primaryRef.current.sync( this.secondaryRef.current.splide );
-	}
+	componentDidMount() {}
 
 	/**
 	 * Render slides.
@@ -39,12 +37,12 @@ export default class ThumbnailsExample extends React.Component {
 	 * @return {ReactNode[]}
 	 */
 	renderSlides() {
-		return createSlides().map( slide => (
-			<SplideSlide key={ slide.src }>
-				<img src={ slide.src } alt={ slide.alt } />
+		return createSlides().map((slide) => (
+			<SplideSlide key={slide.src}>
+				<img src={slide.src} alt={slide.alt} />
 			</SplideSlide>
-		) );
-	};
+		));
+	}
 
 	/**
 	 * Render the component.
@@ -53,22 +51,22 @@ export default class ThumbnailsExample extends React.Component {
 	 */
 	render() {
 		const primaryOptions = {
-			type      : 'loop',
-			perPage   : 2,
-			perMove   : 1,
-			gap       : '1rem',
+			type: "loop",
+			perPage: 2,
+			perMove: 1,
+			gap: "1rem",
 			pagination: false,
 		};
 
 		const secondaryOptions = {
-			type        : 'slide',
-			rewind      : true,
-			gap         : '1rem',
-			pagination  : false,
-			fixedWidth  : 110,
-			fixedHeight : 70,
-			cover       : true,
-			focus       : 'center',
+			type: "slide",
+			rewind: true,
+			gap: "1rem",
+			pagination: false,
+			fixedWidth: 110,
+			fixedHeight: 70,
+			cover: true,
+			focus: "center",
 			isNavigation: true,
 			updateOnMove: true,
 		};
@@ -85,12 +83,16 @@ export default class ThumbnailsExample extends React.Component {
 					View Code
 				</a>
 
-				<Splide options={ primaryOptions } ref={ this.primaryRef }>
-					{ this.renderSlides() }
+				<Splide
+					options={primaryOptions}
+					ref={this.primaryRef}
+					syncSplide={this.secondaryRef.current?.splide}
+				>
+					{this.renderSlides()}
 				</Splide>
 
-				<Splide options={ secondaryOptions } ref={ this.secondaryRef }>
-					{ this.renderSlides() }
+				<Splide options={secondaryOptions} ref={this.secondaryRef}>
+					{this.renderSlides()}
 				</Splide>
 			</div>
 		);
