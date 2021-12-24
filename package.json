@@ -1,6 +1,6 @@
 {
 	"name": "react-splide-async",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "The Splide component for React.",
 	"author": "Naotoshi Fujita",
 	"license": "MIT",
@@ -50,6 +50,7 @@
 	},
 	"scripts": {
 		"build": "webpack --mode production",
+		"dev": "webpack --mode development --watch",
 		"deploy": "gh-pages -d examples/dist",
 		"transpile": "babel src/js -d dist/js --copy-files",
 		"prepublishOnly": "yarn transpile"
