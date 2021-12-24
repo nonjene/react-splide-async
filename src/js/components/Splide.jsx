@@ -58,18 +58,20 @@ export default class Splide extends React.PureComponent {
 	 * Remount the splide when the component is updated.
 	 */
 	componentDidUpdate(prevProps) {
+		const { syncSlides, renderControls, hasSliderWrapper, options } =
+			this.props;
 		if (
-			prevProps.renderControls !== this.props.renderControls ||
-			prevProps.hasSliderWrapper !== this.props.hasSliderWrapper ||
-			prevProps.options !== this.props.options
+			prevProps.renderControls !== renderControls ||
+			prevProps.hasSliderWrapper !== hasSliderWrapper ||
+			prevProps.options !== options
 		) {
 			if (this.splide) {
 				this.splide.refresh();
 			}
 		}
 
-		if (prevProps.syncSplide !== this.props.syncSlides) {
-			this.sync();
+		if (syncSlides && prevProps.syncSplide !== syncSlides) {
+			this.sync(syncSlides);
 		}
 	}
 
