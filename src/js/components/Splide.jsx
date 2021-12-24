@@ -22,6 +22,7 @@ export default class Splide extends React.PureComponent {
 	 * @param {import("react").CSSProperties}   props.style           - Optional. Additional style object for the root element.
 	 * @param {boolean}  props.hasSliderWrapper    - Optional. Whether to wrap a track by a slider element.
 	 * @param {function} props.renderControls      - Optional. A function to render custom controls.
+	 * @param {function} props.syncSplide      - Optional. sync other slides
 	 */
 	constructor(props) {
 		super(props);
@@ -61,10 +62,15 @@ export default class Splide extends React.PureComponent {
 			prevProps.renderControls !== this.props.renderControls ||
 			prevProps.hasSliderWrapper !== this.props.hasSliderWrapper ||
 			prevProps.options !== this.props.options
-		)
+		) {
 			if (this.splide) {
 				this.splide.refresh();
 			}
+		}
+
+		if (prevProps.syncSplide !== this.props.syncSlides) {
+			this.sync();
+		}
 	}
 
 	/**
