@@ -34,9 +34,10 @@ declare module "react-splide-async" {
 		) => void;
 		onMounted?: (instance: SplideObj) => void;
 		manualMount?: boolean;
+		children?: React.ReactNode;
 	}
 	export type SplideObject = SplideObj;
 
 	export const Splide: React.FC<SplideProps>;
-	export const SplideSlide: React.FC;
+	export const SplideSlide: React.FC<{ children?: React.ReactNode }>;
 }
